@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
+import dayjs from 'dayjs';
 import { getDragon } from '../../services/dragons';
 import Header from '../../components/Header';
 import { Container, Data, Title, Value } from './style';
@@ -10,13 +11,16 @@ const Detail = ({ match }) => {
   const [dragon, setDragon] = useState(null);
 
   useEffect(() => {
-    async function fetchDragon() {
+    /**
+     *
+     */
+    const fetchDragon = async () => {
       const { params } = match;
       const response = await getDragon(params.id);
 
       setDragon(response.data);
       setIsLoading(false);
-    }
+    };
 
     fetchDragon();
   }, [match]);
@@ -43,7 +47,7 @@ const Detail = ({ match }) => {
           </Data>
           <Data>
             <Title>Criado em</Title>
-            <Value>{dragon.createdAt}</Value>
+            <Value>{dayjs(dragon.createdAt).format('DD/MM/YYYY HH:mm:ss')}</Value>
           </Data>
         </Container>
       )}

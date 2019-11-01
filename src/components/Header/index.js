@@ -5,11 +5,9 @@ import { Container, Content, Title, Button } from './style';
 
 const Header = ({ title, backButton, history }) => (
   <Container>
-    <Content>
-      {backButton && <Button onClick={() => history.goBack()}>Voltar</Button>}
-    </Content>
+    <Content>{backButton && <Button onClick={() => history.goBack()}>Voltar</Button>}</Content>
     <Title>{title}</Title>
-    <Content></Content>
+    <Content />
   </Container>
 );
 

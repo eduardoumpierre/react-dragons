@@ -2,33 +2,21 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Container = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   list-style: none;
+  padding: 0 15px;
 `;
 
 export const Item = styled.li`
-  background-color: #f7f7f7;
-  width: 100%;
+  background-color: #fafafa;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+  backface-visibility: hidden;
 
-  &:nth-child(even) {
-    background-color: #f1f1f1;
-  }
-
-  @media screen and (min-width: 425px) {
-    width: 50%;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 33.333%;
-  }
-
-  @media screen and (min-width: 1024px) {
-    width: 25%;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 20%;
+  &:hover {
+    transform: scale(1.05) translateZ(0);
+    box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.05);
   }
 `;
 
@@ -54,7 +42,13 @@ export const Attribute = styled.p`
 `;
 
 export const DataContainer = styled(Link)`
-  display: block;
-  text-decoration: none;
+  justify-content: space-between;
+  border-bottom: 5px solid #e4e4e4;
+  border-bottom-color: ${({ type }) => type};
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: 20px;
+  text-decoration: none;
 `;

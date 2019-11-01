@@ -21,8 +21,7 @@ const Home = ({ getDragonListAction, dragonList }) => {
 
 const mapStateToProps = ({ dragons }) => ({ dragonList: dragons.list });
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ getDragonListAction }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ getDragonListAction }, dispatch);
 
 Home.propTypes = {
   getDragonListAction: PropTypes.func.isRequired,

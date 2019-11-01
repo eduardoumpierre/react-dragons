@@ -1,4 +1,11 @@
-import { DRAGONS_LOADING, DRAGONS_RECEIVED, DRAGONS_FAILED } from './actions';
+import {
+  DRAGONS_LOADING,
+  DRAGONS_RECEIVED,
+  DRAGONS_FAILED,
+  DRAGON_FORM_LOADING,
+  DRAGON_FORM_FAILED,
+  DRAGON_FORM_ADD,
+} from './actions';
 
 const INITIAL_STATE = {
   list: [],
@@ -23,6 +30,7 @@ const sortByName = (a, b) => {
 
 export default function(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case DRAGON_FORM_LOADING:
     case DRAGONS_LOADING:
       return {
         ...state,
@@ -34,6 +42,12 @@ export default function(state = INITIAL_STATE, action) {
         list: action.payload.sort(sortByName),
         isLoading: false,
       };
+    case DRAGON_FORM_ADD:
+      return {
+        ...state,
+        list: [...state.list, action.payload].sort(sortByName),
+      };
+    case DRAGON_FORM_FAILED:
     case DRAGONS_FAILED:
       return {
         ...state,
